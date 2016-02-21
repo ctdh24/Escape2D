@@ -51,7 +51,6 @@ public class playerController2D : MonoBehaviour {
                 temp_bullet.transform.localScale = new Vector3(-1, 1, 1);
                 temp_bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-bullet_force, temp_bullet.GetComponent<Rigidbody2D>().velocity.y);
             }
-            Destroy(temp_bullet, 1f);
 
         }
         if (Input.GetButtonUp("Fire1"))

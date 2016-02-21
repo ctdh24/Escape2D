@@ -3,8 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 public class teleporter_script : MonoBehaviour {
-    public GameObject pointA;
-    public GameObject pointB;
+    public GameObject destination;
 	// Use this for initialization
 	void Start () {
 	
