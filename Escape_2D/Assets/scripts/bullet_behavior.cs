@@ -9,6 +9,12 @@ public class bullet_behavior : MonoBehaviour {
     {
         collision = false;
     }
+
+    void Update()
+    {
+        Destroy(gameObject, 2f);
+    }
+
 	// Update is called once per frame
     void OnCollisionEnter2D(Collision2D col)
     {
