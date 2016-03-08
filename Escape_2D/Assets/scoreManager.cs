@@ -4,16 +4,16 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class scoreManager : MonoBehaviour {
-    public static int score;
+    public static int gems;
     Text text;
 	// Use this for initialization
 	void Awake () {
         text = GetComponent<Text>();
-        score = 0;
+        gems = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        text.text = "Score: " + score;
+        text.text = "" + gems;
 	}
 }
