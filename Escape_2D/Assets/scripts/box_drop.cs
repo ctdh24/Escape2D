@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class box_drop : MonoBehaviour {
     public GameObject[] drop;
 	
+    
+
     void OnCollisionEnter2D(Collision2D Col)
     {
         if (Col.gameObject.tag == "Projectile")
@@ -18,6 +22,17 @@ public class box_drop : MonoBehaviour {
             Destroy(gameObject);
             boxSpawner.destroyed = true;
         }
+
+        else if (Col.gameObject.tag == "Player")
+        {
+            GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject p in playerList)
+            {
+                Physics2D.IgnoreCollision(p.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+            }
+        }
+        
     }
 	
 }
