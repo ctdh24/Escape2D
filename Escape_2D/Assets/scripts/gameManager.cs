@@ -6,7 +6,7 @@ public class gameManager : MonoBehaviour {
 
     public GameObject quickPauseUI;
     public GameObject gameOverUI;
-
+    public GameObject boxSpawner;
     public playerController2D player;
     public Animator player_Anim;
 

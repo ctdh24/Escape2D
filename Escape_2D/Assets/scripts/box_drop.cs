@@ -16,6 +16,7 @@ public class box_drop : MonoBehaviour {
                 //tempDrop.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), 0f);
             }
             Destroy(gameObject);
+            boxSpawner.destroyed = true;
         }
     }
 	
