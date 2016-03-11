@@ -23,14 +23,15 @@ public class box_drop : MonoBehaviour {
             boxSpawner.destroyed = true;
         }
 
-        else if (Col.gameObject.tag == "Player")
+        else if (Col.gameObject.tag == "Player" || Col.gameObject.tag == "Pick-Up")
         {
-            GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
+            /*GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject p in playerList)
             {
                 Physics2D.IgnoreCollision(p.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
-            }
+            }*/
+            Physics2D.IgnoreCollision(Col.gameObject.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
         }
         
     }
