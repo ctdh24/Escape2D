@@ -18,7 +18,7 @@ public class bullet_behavior : MonoBehaviour {
 	// Update is called once per frame
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Pick-Up")
         {
             Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
         }

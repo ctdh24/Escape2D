@@ -15,9 +15,11 @@ public class box_drop : MonoBehaviour {
             int random_amount = Random.Range(3, 5);
             for (int i = 0; i < random_amount; ++i)
             {
-                int randDrop = Random.Range(0, drop.Length - 1);
+                int randDrop = Random.Range(0, drop.Length);
+                //Debug.Log(randDrop);
                 GameObject tempDrop = Instantiate(drop[randDrop], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-                //tempDrop.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), 0f);
+                Debug.Log(tempDrop.gameObject.name);
+                tempDrop.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(0.0f, 1.0f));
             }
             Destroy(gameObject);
             boxSpawner.destroyed = true;

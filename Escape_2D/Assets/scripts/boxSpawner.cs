@@ -21,7 +21,7 @@ public class boxSpawner : MonoBehaviour {
             {
                 random_amount = Random.Range(0, spawnPlaces.Length - 1);
             }
-            Debug.Log(random_amount);
+            //Debug.Log(random_amount);
             GameObject tempBox = Instantiate(box, spawnPlaces[random_amount].transform.position, spawnPlaces[random_amount].transform.rotation) as GameObject;
             last_spawned = random_amount;
             destroyed = false;
