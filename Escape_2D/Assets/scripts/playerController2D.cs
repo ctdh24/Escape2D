@@ -17,7 +17,7 @@ public class playerController2D : MonoBehaviour {
     private Rigidbody2D m_Rigidbody2D;
     public bool p_shooting;
     private int num_bullets;
-    public int health;
+    public static int health;
 
     public bool facingRight;
 
@@ -36,7 +36,8 @@ public class playerController2D : MonoBehaviour {
         m_Anim.SetBool("shooting", p_shooting);
         m_Anim.SetFloat("speed", Math.Abs(Input.GetAxis("Horizontal")));
 
-        if (Input.GetButtonDown("Fire1")){
+        if (Input.GetButtonDown("Fire1") && Time.timeScale == 1)
+        {
             p_shooting = true;
             //Instantiate the bullet
             GameObject temp_bullet;
@@ -53,7 +54,7 @@ public class playerController2D : MonoBehaviour {
             }
 
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1") && Time.timeScale == 1)
         {
             p_shooting = false;
         }
@@ -67,7 +68,8 @@ public class playerController2D : MonoBehaviour {
             facingRight = false;
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        if (Input.GetButtonDown("Jump") && p_grounded){
+        if (Input.GetButtonDown("Jump") && p_grounded && Time.timeScale == 1)
+        {
             m_Rigidbody2D.AddForce(Vector2.up*jump_power);
         }
     }

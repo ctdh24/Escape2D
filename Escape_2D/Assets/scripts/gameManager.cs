@@ -33,7 +33,7 @@ public class gameManager : MonoBehaviour {
             pause = !pause;
             Time.timeScale = 1;
         }
-        else if (player.health == 0)
+        else if (playerController2D.health == 0)
         {
             quickPauseUI.SetActive(false);
             gameOverUI.SetActive(true);
