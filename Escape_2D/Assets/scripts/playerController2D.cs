@@ -9,6 +9,8 @@ public class playerController2D : MonoBehaviour {
 
     public GameObject bulletProjection;
     public GameObject bullet;
+    public GameObject shield;
+    private static bool shield_on;
 
     public float bullet_force = 5f;
 
@@ -20,12 +22,21 @@ public class playerController2D : MonoBehaviour {
     public static int health;
 
     public bool facingRight;
-
+    
     void Start () {
+        //create player always facing right like in old Megaman and Mario
         m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         facingRight = true;
+
+        //set the players animator
         m_Anim = gameObject.GetComponent<Animator>();
+        
+        //set shooting to false
         p_shooting = false;
+        
+        //set shield to off
+        shield.SetActive(false);
+        shield_on = false;
         num_bullets = 0;
         health = 6;
     }
@@ -35,7 +46,9 @@ public class playerController2D : MonoBehaviour {
         m_Anim.SetBool("grounded", p_grounded);
         m_Anim.SetBool("shooting", p_shooting);
         m_Anim.SetFloat("speed", Math.Abs(Input.GetAxis("Horizontal")));
-
+        /*=========================================================================================================================*/
+        //shooting fire once per button press.
+        //When Time.timeScale == 0, the game is paused, the the game still registers the button press which creates a fireball
         if (Input.GetButtonDown("Fire1") && Time.timeScale == 1)
         {
             p_shooting = true;
@@ -58,8 +71,15 @@ public class playerController2D : MonoBehaviour {
         {
             p_shooting = false;
         }
-
-
+        /*=========================================================================================================================*/
+        if (Input.GetButtonDown("Fire1") && Input.GetKey("up") && (scoreManager.gems > 50) && !shield_on && Time.timeScale == 1)
+        {
+            shield_on = true;
+            scoreManager.gems -= 50; 
+            shield.SetActive(true);
+        }
+        /*=========================================================================================================================*/
+        //movement. flips player's strite depending on direction + jumping
         if (Input.GetAxis("Horizontal") > 0.1){
             facingRight = true;
             transform.localScale = new Vector3(1, 1, 1);
@@ -72,8 +92,10 @@ public class playerController2D : MonoBehaviour {
         {
             m_Rigidbody2D.AddForce(Vector2.up*jump_power);
         }
+        /*=========================================================================================================================*/
     }
-
+    
+    //basic movement left and right
     void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");

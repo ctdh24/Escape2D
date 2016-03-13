@@ -63,6 +63,7 @@
      <Compile Include="Assets\scripts\quickPause.cs" />
      <Compile Include="Assets\scripts\scoreManager.cs" />
      <Compile Include="Assets\scripts\teleporter_script.cs" />
+     <Compile Include="Assets\shieldLogic.cs" />
      <None Include="Assets\FreeParallax\Readme.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
  <Reference Include="UnityEngine.UI">
