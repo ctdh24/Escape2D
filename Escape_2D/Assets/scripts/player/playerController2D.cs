@@ -35,7 +35,7 @@ public class playerController2D : MonoBehaviour {
         p_shooting = false;
         
         //set shield to off
-        shield.SetActive(false);
+        //shield.SetActive(false);
         shield_on = false;
         num_bullets = 0;
         health = 6;
@@ -75,8 +75,10 @@ public class playerController2D : MonoBehaviour {
         if (Input.GetButtonDown("Fire1") && Input.GetKey("up") && (scoreManager.gems > 50) && !shield_on && Time.timeScale == 1)
         {
             shield_on = true;
-            scoreManager.gems -= 50; 
-            shield.SetActive(true);
+            scoreManager.gems -= 50;
+            GameObject tempShield = Instantiate(shield, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+            tempShield.transform.parent = gameObject.transform;
+            //shield.SetActive(true);
         }
         /*=========================================================================================================================*/
         //movement. flips player's strite depending on direction + jumping
@@ -112,5 +114,10 @@ public class playerController2D : MonoBehaviour {
     public bool is_facingRight()
     {
         return facingRight;
+    }
+    public static void set_shieldOff()
+    {
+        if (shield_on)
+            shield_on = false;
     }
 }
