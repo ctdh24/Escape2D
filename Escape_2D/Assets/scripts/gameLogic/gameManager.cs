@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour {
 
@@ -21,13 +22,13 @@ public class gameManager : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause") && !pause)
+        if (Input.GetButtonDown("Pause") && !pause && !gameOver)
         {
             quickPauseUI.SetActive(true);
             pause = !pause;
             Time.timeScale = 0;
         }
-        else if (Input.GetButtonDown("Pause") && pause)
+        else if (Input.GetButtonDown("Pause") && pause && !gameOver)
         {
             quickPauseUI.SetActive(false);
             pause = !pause;
@@ -39,6 +40,15 @@ public class gameManager : MonoBehaviour {
             gameOverUI.SetActive(true);
             gameOver = true;
             Time.timeScale = 0;
+        }
+        if (gameOver)
+        {
+            if (Input.GetKey("r"))
+            {
+                Debug.Log("GAME OVER");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Time.timeScale = 1;
+            }
         }
     }
 }
