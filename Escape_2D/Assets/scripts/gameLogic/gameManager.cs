@@ -20,7 +20,7 @@ public class gameManager : MonoBehaviour {
         quickPauseUI.SetActive(false);
         gameOverUI.SetActive(false);
         player_Anim.SetBool("game_over", gameOver);
-        InvokeRepeating("spawnGhost", 5.0f, 5.0f);
+        //InvokeRepeating("spawnGhost", 5.0f, 5.0f);
     }
 
     void Update()
