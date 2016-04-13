@@ -43,7 +43,7 @@ public class playerController2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        m_Anim.SetBool("grounded", p_grounded);
+        
         m_Anim.SetBool("shooting", p_shooting);
         m_Anim.SetFloat("speed", Math.Abs(Input.GetAxis("Horizontal")));
         /*=========================================================================================================================*/
@@ -100,6 +100,7 @@ public class playerController2D : MonoBehaviour {
     //basic movement left and right
     void FixedUpdate()
     {
+        m_Anim.SetBool("grounded", p_grounded);
         float h = Input.GetAxis("Horizontal");
         m_Rigidbody2D.AddForce((Vector2.right*m_speed)*h);
         if (m_Rigidbody2D.velocity.x > maxSpeed)

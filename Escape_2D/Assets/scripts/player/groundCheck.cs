@@ -11,15 +11,19 @@ public class groundCheck : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
     {
+
         player.p_grounded = true;
+        Debug.Log("Landed");
     }
-    void OnTriggerStay2D(Collider2D col)
+    /*void OnTriggerStay2D(Collider2D col)
     {
-        player.p_grounded = true;
-    }
+        if(col.name != "Player")
+            player.p_grounded = true;
+    }*/
     void OnTriggerExit2D(Collider2D col)
     {
         player.p_grounded = false;
+        Debug.Log("Airborne");
     }
 
 }
