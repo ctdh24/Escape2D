@@ -8,6 +8,7 @@ public class gameManager : MonoBehaviour {
     public GameObject gameOverUI;
     public GameObject boxSpawner;
     public GameObject ghost;
+    public Transform startingPoint;
     public Camera mainCamera;
 
     public playerController2D player;
@@ -20,6 +21,7 @@ public class gameManager : MonoBehaviour {
         quickPauseUI.SetActive(false);
         gameOverUI.SetActive(false);
         player_Anim.SetBool("game_over", gameOver);
+        player.gameObject.transform.position = startingPoint.position;
         //InvokeRepeating("spawnGhost", 5.0f, 5.0f);
     }
 

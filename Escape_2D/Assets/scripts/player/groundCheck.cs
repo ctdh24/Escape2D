@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEditorInternal;
+using System.Reflection;
 
 public class groundCheck : MonoBehaviour {
 
@@ -8,6 +10,9 @@ public class groundCheck : MonoBehaviour {
     void Start()
     {
         player = gameObject.GetComponentInParent<playerController2D>();
+        GameObject p = GameObject.Find("Player");
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), p.GetComponent<Collider2D>());
+
     }
 
     void Update()
@@ -21,6 +26,8 @@ public class groundCheck : MonoBehaviour {
                 Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), child.GetComponent<Collider2D>());
             }      
         }
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), camera.GetComponent<Collider2D>());
     }
 
     void OnTriggerEnter2D(Collider2D col)
