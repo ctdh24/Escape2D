@@ -121,4 +121,16 @@ public class playerController2D : MonoBehaviour {
         if (shield_on)
             shield_on = false;
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.transform.tag == "Platform")
+            transform.parent = col.transform;
+    }
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.transform.tag == "Platform")
+            transform.parent = null;
+    }
+
 }
